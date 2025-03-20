@@ -18,23 +18,14 @@ namespace MyTest
         [TestMethod]
         public void TestGenerateRevenueReport()
         {
+            Salon salon = new Salon();
             DateTime startDate = new DateTime(2025, 02, 14);
             DateTime endDate = new DateTime(2025, 03, 16);
             string expOutput = $"Выручка за период с {startDate:d} по {endDate:d}: {1200:C}";
 
-            string result = GenerateRevenueReport(startDate, endDate);
+            string result = salon.GenerateRevenueReport(startDate, endDate, appointments);
 
             Assert.AreEqual(expOutput, result);
         }
-
-        public string GenerateRevenueReport(DateTime startDate, DateTime endDate)
-        {
-            var revenue = appointments
-                .Where(a => a.Date >= startDate && a.Date <= endDate)
-                .Sum(a => a.Price);
-            return $"Выручка за период с {startDate:d} по {endDate:d}: {revenue:C}";
-        }
-
-
     }
 }
