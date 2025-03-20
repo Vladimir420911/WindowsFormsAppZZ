@@ -13,8 +13,8 @@ namespace MyLib
             var revenue = appointments
                 .Where(a => a.Date >= startDate && a.Date <= endDate)
                 .Sum(a => a.Price);
-            string output = $"Выручка за период с {startDate:d} по {endDate:d}: {revenue:C}";
-            return output;
+            
+            return $"Выручка за период с {startDate:d} по {endDate:d}: {revenue:C}";
         }
     }
 }
