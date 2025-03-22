@@ -28,6 +28,7 @@ namespace WindowsFormsApp1
         private void button1_Click(object sender, EventArgs e)
         {
             textBox1.Text = salon.GenerateRevenueReport(dateTimePicker1.Value, dateTimePicker2.Value, appointments);
+            System.IO.File.WriteAllText("RevenueReport.txt", textBox1.Text);
         }
     }
 
