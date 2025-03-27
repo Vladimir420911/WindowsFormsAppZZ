@@ -104,6 +104,7 @@
             this.AddAppointment.TabIndex = 7;
             this.AddAppointment.Text = "Добавить запись";
             this.AddAppointment.UseVisualStyleBackColor = true;
+            this.AddAppointment.Click += new System.EventHandler(this.AddAppointment_Click);
             // 
             // Form1
             // 

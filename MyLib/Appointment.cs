@@ -10,11 +10,11 @@ namespace MyLib
     {
         public string Client { get; set; }
         public string Service { get; set; }
-        public double Price { get; set; }
+        public decimal Price { get; set; }
         public string Master { get; set; }
         public DateTime Date { get; set; }
 
-        public Appointment(string client, string service, double price, string master, DateTime date)
+        public Appointment(string client, string service, decimal price, string master, DateTime date)
         {
             Client = client;
             Service = service;

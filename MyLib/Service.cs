@@ -11,10 +11,10 @@ namespace MyLib
     {
 
         public string Name { get; set; }
-        public double Price { get; set; }
+        public decimal Price { get; set; }
         public BindingList<string> Masters { get; set; }
 
-        public Service(string name, double price, BindingList<string> masters)
+        public Service(string name, decimal price, BindingList<string> masters)
         {
             Name = name;
             Price = price;
