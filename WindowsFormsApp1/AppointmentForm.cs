@@ -39,7 +39,7 @@ namespace WindowsFormsApp1
                                               ServiceComboBox.Text,
                                               PriceNumericUpDown.Value,
                                               MasterComboBox.Text,
-                                              dateTimePicker1.Value);
+                                              dateTimePicker1.Value.Date);
 
             appointmentsBind.Add(appointment);
             Close();

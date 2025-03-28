@@ -42,7 +42,7 @@ namespace MyLib
         public string GenerateRevenueReport(DateTime startDate, DateTime endDate)
         {
             var revenue = appointments
-                .Where(a => a.Date >= startDate && a.Date <= endDate)
+                .Where(a => a.Date >= startDate && a.Date <= endDate && a.Date <= DateTime.Today)
                 .Sum(a => a.Price);
             
             return $"Выручка за период с {startDate:d} по {endDate:d}: {revenue:C}";
