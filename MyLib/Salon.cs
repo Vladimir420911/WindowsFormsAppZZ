@@ -33,9 +33,9 @@ namespace MyLib
             };
             appointments = new BindingList<Appointment>
             {
-                 new Appointment("Олег", services[0].Name, services[0].Price, "Боб", new DateTime(2025, 01, 15)),
-                 new Appointment("Олег2", services[1].Name, services[1].Price, "Гнарп", new DateTime(2025, 02, 15)),
-                 new Appointment("Келвин", services[2].Name, services[2].Price, "Габриель", new DateTime(2025, 03, 15))
+                 new Appointment("Олег", services[0].Name, services[0].Price, masters[0], new DateTime(2025, 01, 15)),
+                 new Appointment("Олег2", services[1].Name, services[1].Price, masters[1], new DateTime(2025, 02, 15)),
+                 new Appointment("Келвин", services[2].Name, services[2].Price, masters[2], new DateTime(2025, 03, 15))
             };
         }
 

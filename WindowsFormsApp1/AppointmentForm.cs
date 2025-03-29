@@ -22,14 +22,14 @@ namespace WindowsFormsApp1
             mastersBind = mastersB;
             servicesBind = servicesB;
             appointmentsBind = appointmentsB;
+
             List<string> serviceName = new List<string>();
             for (int i = 0; i < servicesBind.Count(); i++)
             {
                 serviceName.Add(servicesBind[i].Name);
             }
-            ServiceComboBox.DataSource = serviceName;
 
-            //PriceNumericUpDown.Value = servicesBind[ServiceComboBox.SelectedIndex].Price;
+            ServiceComboBox.DataSource = serviceName;
             MasterComboBox.DataSource = mastersBind;
         }
 
