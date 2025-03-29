@@ -23,7 +23,7 @@ namespace MyLib
             
             masters = new BindingList<string>
             {
-                "Мастер1","Мастер2","Мастер3"
+                "Боб","Гнарп","Габриель"
             };
             services = new BindingList<Service>
             {
@@ -33,10 +33,27 @@ namespace MyLib
             };
             appointments = new BindingList<Appointment>
             {
-                 new Appointment("Олег", services[0].Name, services[0].Price, "Мастер1", new DateTime(2025, 01, 15)),
-                 new Appointment("Олег2", services[1].Name, services[1].Price, "Мастер2", new DateTime(2025, 02, 15)),
-                 new Appointment("Келвин", services[2].Name, services[2].Price, "Мастер3", new DateTime(2025, 03, 15))
+                 new Appointment("Олег", services[0].Name, services[0].Price, "Боб", new DateTime(2025, 01, 15)),
+                 new Appointment("Олег2", services[1].Name, services[1].Price, "Гнарп", new DateTime(2025, 02, 15)),
+                 new Appointment("Келвин", services[2].Name, services[2].Price, "Габриель", new DateTime(2025, 03, 15))
             };
+        }
+
+        public string GenerateEmployeeReport(DateTime startDate, DateTime endDate)
+        {
+            var employeeRevenue = appointments
+                 .Where(a => a.Date >= startDate && a.Date <= endDate && a.Date <= DateTime.Today)
+                 .GroupBy(a => a.Master)
+                 .Select(g => new { Master = g.Key, Revenue = g.Sum(a => a.Price) })
+                 .OrderByDescending(e => e.Revenue)
+                 .ToList();
+
+            var report = $"Отчет по сотрудникам за период с {startDate:d} по {endDate:d}:\n";
+            foreach (var employee in employeeRevenue)
+            {
+                report += $"{employee.Master}: {employee.Revenue:C}\n";
+            }
+            return report;
         }
 
         public string GenerateRevenueReport(DateTime startDate, DateTime endDate)

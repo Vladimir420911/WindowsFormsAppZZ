@@ -47,7 +47,7 @@
             // 
             this.NameTextBox.Location = new System.Drawing.Point(24, 30);
             this.NameTextBox.Name = "NameTextBox";
-            this.NameTextBox.Size = new System.Drawing.Size(103, 20);
+            this.NameTextBox.Size = new System.Drawing.Size(115, 20);
             this.NameTextBox.TabIndex = 0;
             // 
             // label1
@@ -64,7 +64,7 @@
             this.ServiceComboBox.FormattingEnabled = true;
             this.ServiceComboBox.Location = new System.Drawing.Point(24, 80);
             this.ServiceComboBox.Name = "ServiceComboBox";
-            this.ServiceComboBox.Size = new System.Drawing.Size(103, 21);
+            this.ServiceComboBox.Size = new System.Drawing.Size(115, 21);
             this.ServiceComboBox.TabIndex = 2;
             this.ServiceComboBox.SelectedIndexChanged += new System.EventHandler(this.ServiceComboBox_SelectedIndexChanged);
             // 
@@ -91,12 +91,17 @@
             this.MasterComboBox.FormattingEnabled = true;
             this.MasterComboBox.Location = new System.Drawing.Point(24, 173);
             this.MasterComboBox.Name = "MasterComboBox";
-            this.MasterComboBox.Size = new System.Drawing.Size(103, 21);
+            this.MasterComboBox.Size = new System.Drawing.Size(115, 21);
             this.MasterComboBox.TabIndex = 6;
             // 
             // PriceNumericUpDown
             // 
             this.PriceNumericUpDown.DecimalPlaces = 2;
+            this.PriceNumericUpDown.Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             this.PriceNumericUpDown.Location = new System.Drawing.Point(24, 129);
             this.PriceNumericUpDown.Maximum = new decimal(new int[] {
             1000,
@@ -104,7 +109,8 @@
             0,
             0});
             this.PriceNumericUpDown.Name = "PriceNumericUpDown";
-            this.PriceNumericUpDown.Size = new System.Drawing.Size(103, 20);
+            this.PriceNumericUpDown.ReadOnly = true;
+            this.PriceNumericUpDown.Size = new System.Drawing.Size(115, 20);
             this.PriceNumericUpDown.TabIndex = 7;
             // 
             // label4
@@ -118,9 +124,9 @@
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(21, 224);
+            this.dateTimePicker1.Location = new System.Drawing.Point(24, 224);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(106, 20);
+            this.dateTimePicker1.Size = new System.Drawing.Size(115, 20);
             this.dateTimePicker1.TabIndex = 9;
             // 
             // label5

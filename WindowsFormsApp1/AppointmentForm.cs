@@ -16,12 +16,12 @@ namespace WindowsFormsApp1
         BindingList<string> mastersBind;
         BindingList<Service> servicesBind;
         BindingList<Appointment> appointmentsBind;
-        public AppointmentForm(BindingList<string> mastersBind, BindingList<Service> servicesBind, BindingList<Appointment> appointmentsBind)
+        public AppointmentForm(BindingList<string> mastersB, BindingList<Service> servicesB, BindingList<Appointment> appointmentsB)
         {
             InitializeComponent();
-            this.mastersBind = mastersBind;
-            this.servicesBind = servicesBind;
-            this.appointmentsBind = appointmentsBind;
+            mastersBind = mastersB;
+            servicesBind = servicesB;
+            appointmentsBind = appointmentsB;
             List<string> serviceName = new List<string>();
             for (int i = 0; i < servicesBind.Count(); i++)
             {
