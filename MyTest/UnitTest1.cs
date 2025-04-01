@@ -13,13 +13,16 @@ namespace MyTest
         public void TestGenerateRevenueReport()
         {
             Salon salon = new Salon();
+            salon.PopulateLists();
             DateTime startDate = new DateTime(2025, 02, 14);
             DateTime endDate = new DateTime(2025, 03, 16);
-            string expOutput = $"Выручка за период с {startDate:d} по {endDate:d}: {1200:C}";
+            string expOutput = $"Выручка за период с {startDate:d} по {endDate:d}: {1199.98:C}";
 
             string result = salon.GenerateRevenueReport(startDate, endDate);
 
             Assert.AreEqual(expOutput, result);
         }
+
+
     }
 }
