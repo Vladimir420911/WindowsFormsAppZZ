@@ -14,6 +14,8 @@ namespace MyLib
         public decimal Price { get; set; }
         public BindingList<string> Masters { get; set; }
 
+
+
         public Service(string name, decimal price, BindingList<string> masters)
         {
             Name = name;
