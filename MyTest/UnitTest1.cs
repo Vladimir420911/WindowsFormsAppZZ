@@ -11,7 +11,7 @@ namespace MyTest
     {
         Salon salon = new Salon();
         [TestMethod]
-        public void TestGenerateRevenueReport()
+        public void TestGenerateRevenueReport_ReturnsCorrectResult()
         {
             salon.PopulateLists();
             DateTime startDate = new DateTime(2025, 02, 14);
@@ -24,7 +24,7 @@ namespace MyTest
         }
 
         [TestMethod]
-        public void TestGenerateEmployeeReport()
+        public void TestGenerateEmployeeReport_ReturnsCorrectResult()
         {
             salon.PopulateLists();
             DateTime startDate = new DateTime(2025, 01, 01);
