@@ -11,31 +11,39 @@ namespace MyTest
     {
         Salon salon = new Salon();
         [TestMethod]
-        public void TestGenerateRevenueReport_ReturnsCorrectResult()
+        public void TestGenerateRevenueReport_ValidData()
         {
             salon.PopulateLists();
-            DateTime startDate = new DateTime(2025, 02, 14);
-            DateTime endDate = new DateTime(2025, 03, 16);
-            string expOutput = $"Выручка за период с {startDate:d} по {endDate:d}: {1199.98:C}";
+            DateTime startDate = new DateTime(2025, 01, 10);
+            DateTime endDate = new DateTime(2025, 03, 20);
 
-            string result = salon.GenerateRevenueReport(startDate, endDate);
+            var report = salon.GenerateRevenueReport(startDate, endDate, salon.appointments);
 
-            Assert.AreEqual(expOutput, result);
+            Assert.AreEqual(1699.97m, report[0].TotalRevenue);
         }
 
         [TestMethod]
-        public void TestGenerateEmployeeReport_ReturnsCorrectResult()
+        public void TestGenereateRevenueReport_EmptyData()
         {
             salon.PopulateLists();
-            DateTime startDate = new DateTime(2025, 01, 01);
-            DateTime endDate = new DateTime(2025, 04, 01);
-            string expOutput = $"Отчет по сотрудникам за период с {startDate:d} по {endDate:d}:\n" +
-                               $"Гнарп: {749.99m:C}\n" +
-                               $"Боб: {499.99m:C}\n" +
-                               $"Габриель: {449.99m:C}\n";
+            DateTime startDate = new DateTime(2025, 03, 20);
+            DateTime endDate = new DateTime(2025, 04, 05);
 
-            string result = salon.GenerateEmployeeReport(startDate, endDate);
-            Assert.AreEqual(expOutput, result);
+            var report = salon.GenerateRevenueReport(startDate, endDate, salon.appointments);
+
+            Assert.AreEqual(0, report[0].TotalRevenue);
+        }
+
+        [TestMethod]
+        public void TestGenereateRevenueReport_SameDataRange()
+        {
+            salon.PopulateLists();
+            DateTime startDate = new DateTime(2025, 01, 15);
+            DateTime endDate = new DateTime(2025, 02, 15);
+
+            var report = salon.GenerateRevenueReport(startDate, endDate, salon.appointments);
+
+            Assert.AreEqual(1249.98m, report[0].TotalRevenue);
         }
     }
 }
