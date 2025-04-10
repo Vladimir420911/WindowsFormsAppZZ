@@ -39,7 +39,7 @@ namespace MyLib
             };
         }
 
-        public string GenerateEmployeeReport(DateTime startDate, DateTime endDate)
+        public BindingList<EmployeeReportModel> GenerateEmployeeReport(DateTime startDate, DateTime endDate, BindingList<Appointment> appointments)
         {
             var employeeRevenue = appointments
                  .Where(a => a.Date >= startDate && a.Date <= endDate && a.Date <= DateTime.Today)
@@ -48,25 +48,24 @@ namespace MyLib
                  .OrderByDescending(e => e.Revenue)
                  .ToList();
 
-            var report = $"Отчет по сотрудникам за период с {startDate:d} по {endDate:d}:\n";
-            foreach (var employee in employeeRevenue)
+            BindingList<EmployeeReportModel> report = new BindingList<EmployeeReportModel>();
+            foreach (var emp in employeeRevenue)
             {
-                report += $"{employee.Master}: {employee.Revenue:C}\n";
-            }
-            if(report == null)
-            {
-                return "Вы ввели отстой";
+                report.Add(new EmployeeReportModel(emp.Master, emp.Revenue));
             }
             return report;
         }
 
-        public string GenerateRevenueReport(DateTime startDate, DateTime endDate)
+        public BindingList<RevenueReportModel> GenerateRevenueReport(DateTime startDate, DateTime endDate, BindingList<Appointment> appointments)
         {
             var revenue = appointments
                 .Where(a => a.Date >= startDate && a.Date <= endDate && a.Date <= DateTime.Today)
                 .Sum(a => a.Price);
-            
-            return $"Выручка за период с {startDate:d} по {endDate:d}: {revenue:C}";
+
+            BindingList<RevenueReportModel> report = new BindingList<RevenueReportModel> ();
+            report.Add(new RevenueReportModel(startDate, endDate, revenue));
+
+            return report;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyLib;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,15 +13,23 @@ namespace WindowsFormsApp1
 {
     public partial class ReportForm: Form
     {
-        public ReportForm()
+        Salon salon = new Salon();
+        BindingList<Appointment> a;
+        public ReportForm(BindingList<Appointment> _a)
         {
             InitializeComponent();
-
+            a = _a;
+            ReportTable.DataSource = a;
         }
 
         private void EmployeeReportButton_Click(object sender, EventArgs e)
         {
+            ReportTable.DataSource = salon.GenerateEmployeeReport(DateTimeStart.Value, DateTimeEnd.Value, a);
+        }
 
+        private void RevenueReportButton_Click(object sender, EventArgs e)
+        {
+            ReportTable.DataSource = salon.GenerateRevenueReport(DateTimeStart.Value, DateTimeEnd.Value, a);
         }
     }
 }

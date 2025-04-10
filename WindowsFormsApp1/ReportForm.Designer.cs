@@ -32,8 +32,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.RevenueReportButton = new System.Windows.Forms.Button();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.DateTimeEnd = new System.Windows.Forms.DateTimePicker();
+            this.DateTimeStart = new System.Windows.Forms.DateTimePicker();
             this.ReportTable = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.ReportTable)).BeginInit();
             this.SuspendLayout();
@@ -74,20 +74,21 @@
             this.RevenueReportButton.TabIndex = 23;
             this.RevenueReportButton.Text = "Отчет по доходам";
             this.RevenueReportButton.UseVisualStyleBackColor = true;
+            this.RevenueReportButton.Click += new System.EventHandler(this.RevenueReportButton_Click);
             // 
-            // dateTimePicker2
+            // DateTimeEnd
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(138, 253);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(111, 20);
-            this.dateTimePicker2.TabIndex = 22;
+            this.DateTimeEnd.Location = new System.Drawing.Point(138, 253);
+            this.DateTimeEnd.Name = "DateTimeEnd";
+            this.DateTimeEnd.Size = new System.Drawing.Size(111, 20);
+            this.DateTimeEnd.TabIndex = 22;
             // 
-            // dateTimePicker1
+            // DateTimeStart
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(12, 253);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(111, 20);
-            this.dateTimePicker1.TabIndex = 21;
+            this.DateTimeStart.Location = new System.Drawing.Point(12, 253);
+            this.DateTimeStart.Name = "DateTimeStart";
+            this.DateTimeStart.Size = new System.Drawing.Size(111, 20);
+            this.DateTimeStart.TabIndex = 21;
             // 
             // ReportTable
             // 
@@ -107,8 +108,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.RevenueReportButton);
-            this.Controls.Add(this.dateTimePicker2);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.DateTimeEnd);
+            this.Controls.Add(this.DateTimeStart);
             this.Name = "ReportForm";
             this.Text = "ReportForm";
             ((System.ComponentModel.ISupportInitialize)(this.ReportTable)).EndInit();
@@ -123,8 +124,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button RevenueReportButton;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker DateTimeEnd;
+        private System.Windows.Forms.DateTimePicker DateTimeStart;
         private System.Windows.Forms.DataGridView ReportTable;
     }
 }
