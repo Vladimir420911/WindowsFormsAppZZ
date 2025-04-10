@@ -24,12 +24,12 @@ namespace WindowsFormsApp1
 
         private void EmployeeReportButton_Click(object sender, EventArgs e)
         {
-            ReportTable.DataSource = salon.GenerateEmployeeReport(DateTimeStart.Value, DateTimeEnd.Value, a);
+            ReportTable.DataSource = salon.GenerateEmployeeReport(DateTimeStart.Value.Date, DateTimeEnd.Value.Date, a);
         }
 
         private void RevenueReportButton_Click(object sender, EventArgs e)
         {
-            ReportTable.DataSource = salon.GenerateRevenueReport(DateTimeStart.Value, DateTimeEnd.Value, a);
+            ReportTable.DataSource = salon.GenerateRevenueReport(DateTimeStart.Value.Date, DateTimeEnd.Value.Date, a);
         }
     }
 }

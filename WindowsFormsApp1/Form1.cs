@@ -38,7 +38,7 @@ namespace WindowsFormsApp1
 
         private void pictureBox1_DoubleClick(object sender, EventArgs e)
         {
-            MessageBox.Show("Вы нажали на гнарпа", "Поздравляю!!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Вы нажали на Гнарпа", "Поздравляю!!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 
