@@ -80,6 +80,7 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Image = global::WindowsFormsApp1.Properties.Resources.gnarpy;
             this.pictureBox1.Location = new System.Drawing.Point(772, 426);
             this.pictureBox1.Name = "pictureBox1";

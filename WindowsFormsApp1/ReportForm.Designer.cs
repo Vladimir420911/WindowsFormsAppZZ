@@ -35,6 +35,7 @@
             this.DateTimeEnd = new System.Windows.Forms.DateTimePicker();
             this.DateTimeStart = new System.Windows.Forms.DateTimePicker();
             this.ReportTable = new System.Windows.Forms.DataGridView();
+            this.ResetButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ReportTable)).BeginInit();
             this.SuspendLayout();
             // 
@@ -98,11 +99,22 @@
             this.ReportTable.Size = new System.Drawing.Size(742, 197);
             this.ReportTable.TabIndex = 27;
             // 
+            // ResetButton
+            // 
+            this.ResetButton.Location = new System.Drawing.Point(12, 335);
+            this.ResetButton.Name = "ResetButton";
+            this.ResetButton.Size = new System.Drawing.Size(111, 23);
+            this.ResetButton.TabIndex = 28;
+            this.ResetButton.Text = "Сброс";
+            this.ResetButton.UseVisualStyleBackColor = true;
+            this.ResetButton.Click += new System.EventHandler(this.ResetButton_Click);
+            // 
             // ReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(766, 370);
+            this.Controls.Add(this.ResetButton);
             this.Controls.Add(this.ReportTable);
             this.Controls.Add(this.EmployeeReportButton);
             this.Controls.Add(this.label2);
@@ -127,5 +139,6 @@
         private System.Windows.Forms.DateTimePicker DateTimeEnd;
         private System.Windows.Forms.DateTimePicker DateTimeStart;
         private System.Windows.Forms.DataGridView ReportTable;
+        private System.Windows.Forms.Button ResetButton;
     }
 }

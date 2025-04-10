@@ -31,5 +31,10 @@ namespace WindowsFormsApp1
         {
             ReportTable.DataSource = salon.GenerateRevenueReport(DateTimeStart.Value.Date, DateTimeEnd.Value.Date, a);
         }
+
+        private void ResetButton_Click(object sender, EventArgs e)
+        {
+            ReportTable.DataSource = a;
+        }
     }
 }
