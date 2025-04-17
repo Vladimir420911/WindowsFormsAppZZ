@@ -19,22 +19,38 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
             a = _a;
-            ReportTable.DataSource = a;
+            ReportTable.DataSource = null;
         }
 
         private void EmployeeReportButton_Click(object sender, EventArgs e)
         {
-            ReportTable.DataSource = salon.GenerateEmployeeReport(DateTimeStart.Value.Date, DateTimeEnd.Value.Date, a);
+            var employeeReport = salon.GenerateEmployeeReport(DateTimeStart.Value.Date, DateTimeEnd.Value.Date, a);
+            if (employeeReport != null && employeeReport.Any())
+            {
+                ReportTable.DataSource = employeeReport;
+            }
+            else
+            {
+                MessageBox.Show("Отчет пуст.");
+            }
         }
 
         private void RevenueReportButton_Click(object sender, EventArgs e)
         {
-            ReportTable.DataSource = salon.GenerateRevenueReport(DateTimeStart.Value.Date, DateTimeEnd.Value.Date, a);
+            var revenueReport = salon.GenerateRevenueReport(DateTimeStart.Value.Date, DateTimeEnd.Value.Date, a);
+            if (revenueReport.Any(rev => rev.TotalRevenue != 0))
+            {
+                ReportTable.DataSource = revenueReport;
+            }
+            else
+            {
+                MessageBox.Show("Отчет пуст.");
+            }
         }
 
         private void ResetButton_Click(object sender, EventArgs e)
         {
-            ReportTable.DataSource = a;
+            ReportTable.DataSource = null;
         }
     }
 }

@@ -39,7 +39,7 @@ namespace MyLib
             };
         }
 
-        public BindingList<EmployeeReportModel> GenerateEmployeeReport(DateTime startDate, DateTime endDate, BindingList<Appointment> appointments)
+        public List<EmployeeReportModel> GenerateEmployeeReport(DateTime startDate, DateTime endDate, BindingList<Appointment> appointments)
         {
             var employeeRevenue = appointments
                  .Where(a => a.Date >= startDate && a.Date <= endDate && a.Date <= DateTime.Today)
@@ -48,7 +48,7 @@ namespace MyLib
                  .OrderByDescending(e => e.Revenue)
                  .ToList();
 
-            BindingList<EmployeeReportModel> report = new BindingList<EmployeeReportModel>();
+            List<EmployeeReportModel> report = new List<EmployeeReportModel>();
             foreach (var emp in employeeRevenue)
             {
                 report.Add(new EmployeeReportModel(emp.Master, emp.Revenue));
@@ -56,13 +56,13 @@ namespace MyLib
             return report;
         }
 
-        public BindingList<RevenueReportModel> GenerateRevenueReport(DateTime startDate, DateTime endDate, BindingList<Appointment> appointments)
+        public List<RevenueReportModel> GenerateRevenueReport(DateTime startDate, DateTime endDate, BindingList<Appointment> appointments)
         {
             var revenue = appointments
                 .Where(a => a.Date >= startDate && a.Date <= endDate && a.Date <= DateTime.Today)
                 .Sum(a => a.Price);
 
-            BindingList<RevenueReportModel> report = new BindingList<RevenueReportModel> ();
+            List<RevenueReportModel> report = new List<RevenueReportModel>();
             report.Add(new RevenueReportModel(startDate, endDate, revenue));
 
             return report;
