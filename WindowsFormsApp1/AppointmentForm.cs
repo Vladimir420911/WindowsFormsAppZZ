@@ -53,6 +53,7 @@ namespace WindowsFormsApp1
         private void ServiceComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             PriceNumericUpDown.Value = servicesBind[ServiceComboBox.SelectedIndex].Price;
+            //MasterComboBox.DataSource = mastersBind[ServiceComboBox.SelectedIndex].
         }
     }
 }

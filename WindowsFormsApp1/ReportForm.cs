@@ -31,7 +31,7 @@ namespace WindowsFormsApp1
             }
             else
             {
-                MessageBox.Show("Отчет пуст.");
+                MessageBox.Show("Отчет пуст", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -44,7 +44,7 @@ namespace WindowsFormsApp1
             }
             else
             {
-                MessageBox.Show("Отчет пуст.");
+                MessageBox.Show("Отчет пуст", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
