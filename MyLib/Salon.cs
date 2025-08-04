@@ -3,40 +3,45 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.IO;
+using System.Windows.Forms;
 
 namespace MyLib
 {
     public class Salon
     {
-        public BindingList<string> clients;
-        public BindingList<string> masters;
-        public BindingList<Service> services;
-        public BindingList<Appointment> appointments;
-        public void PopulateLists()
+        public BindingList<string> clients = new BindingList<string>();
+        public BindingList<Service> services = new BindingList<Service>();
+        public BindingList<Appointment> appointments = new BindingList<Appointment>();
+
+        public void LoadServicesFromFile(string filename)
         {
-            
-            clients = new BindingList<string>
+            if (!File.Exists(filename))
             {
-                "Олег", "Олег2", "Келвин"
-            };
-            
-            masters = new BindingList<string>
+                MessageBox.Show($"Файл {filename} не найден. Убедитесь, что файл существует и указан правильный путь.");
+                return;
+            }
+            try
             {
-                "Боб","Гнарп","Габриель"
-            };
-            services = new BindingList<Service>
+                var lines = File.ReadAllLines(filename);
+                services.Clear();
+                foreach (var line in lines)
+                {
+                    try
+                    {
+                        services.Add(Service.Parse(line));
+                    }
+                    catch (FormatException e)
+                    {
+                        MessageBox.Show($"Ошибка при чтении строки: '{line}'. Ошибка:{e.Message}");
+                    }
+
+                }
+            }
+            catch (Exception ex)
             {
-                new Service("ноготки", 499.99m, masters),
-                new Service("пушка калатушка", 749.99m, masters),
-                new Service("бомба петарррррда", 449.99m, masters)
-            };
-            appointments = new BindingList<Appointment>
-            {
-                 new Appointment(clients[0], services[0].Name, services[0].Price, masters[0], new DateTime(2025, 01, 15)),
-                 new Appointment(clients[1], services[1].Name, services[1].Price, masters[1], new DateTime(2025, 02, 15)),
-                 new Appointment(clients[2], services[2].Name, services[2].Price, masters[2], new DateTime(2025, 03, 15))
-            };
+                MessageBox.Show($"Ошибка при чтении файла {filename}: {ex.Message}");
+            }
         }
 
         public List<EmployeeReportModel> GenerateEmployeeReport(DateTime startDate, DateTime endDate, BindingList<Appointment> appointments)
@@ -44,7 +49,7 @@ namespace MyLib
             var employeeRevenue = appointments
                  .Where(a => a.Date >= startDate && a.Date <= endDate && a.Date <= DateTime.Today)
                  .GroupBy(a => a.Master)
-                 .Select(g => new { Master = g.Key, Revenue = g.Sum(a => a.Price) })
+                 .Select(g => new { Master = g.Key, Revenue = g.Sum(a => a.Service.Price) })
                  .OrderByDescending(e => e.Revenue)
                  .ToList();
 
@@ -60,7 +65,7 @@ namespace MyLib
         {
             var revenue = appointments
                 .Where(a => a.Date >= startDate && a.Date <= endDate && a.Date <= DateTime.Today)
-                .Sum(a => a.Price);
+                .Sum(a => a.Service.Price);
 
             List<RevenueReportModel> report = new List<RevenueReportModel>();
             report.Add(new RevenueReportModel(startDate, endDate, revenue));

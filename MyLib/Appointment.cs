@@ -9,16 +9,14 @@ namespace MyLib
     public class Appointment
     {
         public string Client { get; set; }
-        public string Service { get; set; }
-        public decimal Price { get; set; }
+        public Service Service { get; set; }
         public string Master { get; set; }
         public DateTime Date { get; set; }
 
-        public Appointment(string client, string service, decimal price, string master, DateTime date)
+        public Appointment(string client, Service service, string master, DateTime date)
         {
             Client = client;
             Service = service;
-            Price = price;
             Master = master;
             Date = date;
         }

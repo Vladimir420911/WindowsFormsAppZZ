@@ -15,10 +15,10 @@ namespace WindowsFormsApp1
     {
         Salon salon = new Salon();
         BindingList<Appointment> a;
-        public ReportForm(BindingList<Appointment> _a)
+        public ReportForm()
         {
             InitializeComponent();
-            a = _a;
+            //a = _a;
             ReportTable.DataSource = null;
         }
 

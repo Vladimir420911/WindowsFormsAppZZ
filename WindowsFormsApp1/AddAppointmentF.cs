@@ -11,17 +11,15 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class AppointmentForm : Form
+    public partial class AddAppointmentF : Form
     {
         BindingList<string> mastersBind;
         BindingList<Service> servicesBind;
-        BindingList<Appointment> appointmentsBind;
-        public AppointmentForm(BindingList<string> mastersB, BindingList<Service> servicesB, BindingList<Appointment> appointmentsB)
+        public AddAppointmentF(BindingList<string> mastersB, BindingList<Service> servicesB)
         {
             InitializeComponent();
             mastersBind = mastersB;
             servicesBind = servicesB;
-            appointmentsBind = appointmentsB;
 
             List<string> serviceName = new List<string>();
             for (int i = 0; i < servicesBind.Count(); i++)
@@ -35,13 +33,12 @@ namespace WindowsFormsApp1
 
         private void addButton_Click(object sender, EventArgs e)
         {
-            var appointment = new Appointment(NameTextBox.Text, 
-                                              ServiceComboBox.Text,
-                                              PriceNumericUpDown.Value,
+            var appointment = new Appointment(NameTextBox.Text,
+                                              ReturnService(),
                                               MasterComboBox.Text,
                                               dateTimePicker1.Value.Date);
 
-            appointmentsBind.Add(appointment);
+            //appointmentsBind.Add(appointment);
             Close();
         }
 
@@ -50,10 +47,9 @@ namespace WindowsFormsApp1
             Close();
         }
 
-        private void ServiceComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        private Service ReturnService()
         {
-            PriceNumericUpDown.Value = servicesBind[ServiceComboBox.SelectedIndex].Price;
-            //MasterComboBox.DataSource = mastersBind[ServiceComboBox.SelectedIndex].
+            return ServiceComboBox.SelectedItem as Service;
         }
     }
 }
