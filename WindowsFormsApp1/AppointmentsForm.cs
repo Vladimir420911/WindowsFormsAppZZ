@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyLib;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,17 @@ namespace WindowsFormsApp1
 {
     public partial class AppointmentsForm : Form
     {
-        public AppointmentsForm()
+        Salon salon = new Salon();
+        BindingList<Appointment> appointments;
+        public AppointmentsForm(BindingList<Appointment> appointmentsBind)
         {
             InitializeComponent();
+            appointments = appointmentsBind;
+            salon.PopulateDataGrid(appointments, AppoinmentDataTable);
+        }
+
+        private void AppointmentsForm_Load(object sender, EventArgs e)
+        {
         }
     }
 }

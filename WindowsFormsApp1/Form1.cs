@@ -16,13 +16,13 @@ namespace WindowsFormsApp1
     {
         Salon salon = new Salon();
         string servicesFilename = "services.txt";
-        public BindingList<Service> services;
+        public List<Service> services;
         public Form1()
         {
             InitializeComponent();
             salon.LoadServicesFromFile(servicesFilename);
+            services = salon.services.Values.ToList();
 
-            services = salon.services;
             dataGridView1.DataSource = services;
         }
         /*
@@ -45,13 +45,12 @@ namespace WindowsFormsApp1
 
         private void записиToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AppointmentsForm appointmentsForm = new AppointmentsForm();
 
-            appointmentsForm.Left = this.Left;
-            appointmentsForm.Top = this.Top;
+            string appointmentsFilename = "appointments.txt";
+            salon.LoadAppointmentsFromFile(appointmentsFilename);
+            AppointmentsForm appointmentsForm = new AppointmentsForm(salon.appointments);
+
             appointmentsForm.Show();
-
-            this.Hide();
         }
     }
 

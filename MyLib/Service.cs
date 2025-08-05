@@ -10,7 +10,6 @@ namespace MyLib
 {
     public class Service
     {
-
         public string Name { get; set; }
         public decimal Price { get; set; }
         public string Masters { get; set; }
@@ -24,7 +23,7 @@ namespace MyLib
             Masters = masters;
         }
 
-        public string CreateString()
+        public override string ToString()
         {
             return $"{Name};{Price};{string.Join(",", Masters)}";
         }
