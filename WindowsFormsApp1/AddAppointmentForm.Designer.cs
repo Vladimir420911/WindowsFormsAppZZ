@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp1
 {
-    partial class AddAppointmentF
+    partial class AddAppointmentForm
     {
         /// <summary>
         /// Required designer variable.
@@ -63,6 +63,7 @@
             this.ServiceComboBox.Name = "ServiceComboBox";
             this.ServiceComboBox.Size = new System.Drawing.Size(115, 21);
             this.ServiceComboBox.TabIndex = 2;
+            this.ServiceComboBox.SelectedIndexChanged += new System.EventHandler(this.ServiceComboBox_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -126,7 +127,7 @@
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
-            // AppointmentForm
+            // AddAppointmentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -141,7 +142,7 @@
             this.Controls.Add(this.ServiceComboBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.NameTextBox);
-            this.Name = "AppointmentForm";
+            this.Name = "AddAppointmentForm";
             this.Text = "AppointmentForm";
             this.ResumeLayout(false);
             this.PerformLayout();

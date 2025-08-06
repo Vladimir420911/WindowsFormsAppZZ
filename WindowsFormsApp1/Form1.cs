@@ -12,12 +12,12 @@ using System.IO;
 
 namespace WindowsFormsApp1
 {
-    public partial class Form1: Form
+    public partial class MainForm: Form
     {
         Salon salon = new Salon();
         string servicesFilename = "services.txt";
         public List<Service> services;
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
             salon.LoadServicesFromFile(servicesFilename);
@@ -48,7 +48,8 @@ namespace WindowsFormsApp1
 
             string appointmentsFilename = "appointments.txt";
             salon.LoadAppointmentsFromFile(appointmentsFilename);
-            AppointmentsForm appointmentsForm = new AppointmentsForm(salon.appointments);
+            BindingList<Service> servicesBind = new BindingList<Service>(services);
+            AppointmentsForm appointmentsForm = new AppointmentsForm(salon.appointments, servicesBind);
 
             appointmentsForm.Show();
         }

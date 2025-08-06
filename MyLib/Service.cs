@@ -12,20 +12,17 @@ namespace MyLib
     {
         public string Name { get; set; }
         public decimal Price { get; set; }
-        public string Masters { get; set; }
+        [Browsable(false)]
+        public List<string> Masters { get; set; }
+        public string Master { get { return $"{string.Join(",", Masters)}"; } }
 
 
 
-        public Service(string name, decimal price, string masters)
+        public Service(string name, decimal price, List<string> masters)
         {
             Name = name;
             Price = price;
             Masters = masters;
-        }
-
-        public override string ToString()
-        {
-            return $"{Name};{Price};{string.Join(",", Masters)}";
         }
 
         public static Service Parse(string line)
@@ -33,7 +30,10 @@ namespace MyLib
             string[] parts = line.Split(';');
             if (parts.Length != 3) throw new FormatException("Неправильный формат строки услуги");
 
-            return new Service(parts[0], decimal.Parse(parts[1], CultureInfo.InvariantCulture), parts[2]);
+            string[] masters = parts[2].Split(',');
+            if(masters.Length < 1) throw new FormatException("Неправильный формат строки услуги");
+
+            return new Service(parts[0], decimal.Parse(parts[1], CultureInfo.InvariantCulture), masters.ToList());
         }
     }
 }

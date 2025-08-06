@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,15 +16,19 @@ namespace WindowsFormsApp1
     {
         Salon salon = new Salon();
         BindingList<Appointment> appointments;
-        public AppointmentsForm(BindingList<Appointment> appointmentsBind)
+        BindingList<Service> services;
+        public AppointmentsForm(BindingList<Appointment> appointmentsBind, BindingList<Service> servicesBind)
         {
             InitializeComponent();
             appointments = appointmentsBind;
-            salon.PopulateDataGrid(appointments, AppoinmentDataTable);
+            services = servicesBind;
+            AppoinmentDataTable.DataSource = appointments;
         }
 
-        private void AppointmentsForm_Load(object sender, EventArgs e)
+        private void AddButton_Click(object sender, EventArgs e)
         {
+            AddAppointmentForm addForm = new AddAppointmentForm(services, appointments);
+            addForm.Show();
         }
     }
 }

@@ -12,6 +12,7 @@ namespace MyLib
     {
         public BindingList<string> clients = new BindingList<string>();
         public Dictionary<string, Service> services = new Dictionary<string, Service>();
+        //public BindingList<string> masters = new BindingList<string>();
         public BindingList<Appointment> appointments = new BindingList<Appointment>();
 
         public void LoadServicesFromFile(string filename)
@@ -43,6 +44,29 @@ namespace MyLib
             {
                 MessageBox.Show($"Ошибка при чтении файла {filename}: {ex.Message}");
             }
+        }
+
+        public Dictionary<string, List<string>> LoadMastersToDict(BindingList<Service> servicesList)
+        {
+            Dictionary<string, List<string>> listsOfMasters = new Dictionary<string, List<string>>();
+            foreach (var service in servicesList)
+            {
+                listsOfMasters.Add(service.Name, service.Masters);
+            }
+
+            return listsOfMasters;
+        }
+
+        public BindingList<Service> ServicesListToBindingList(Dictionary<string, Service> services)
+        {
+            BindingList<Service> servicesBind = new BindingList<Service>();
+
+            foreach(var service in servicesBind)
+            {
+                servicesBind.Add(service);
+            }
+
+            return servicesBind;
         }
 
         public void LoadAppointmentsFromFile(string filename)
@@ -79,35 +103,19 @@ namespace MyLib
             }
         }
 
-        public void PopulateDataGrid(BindingList<Appointment> appointments, DataGridView dataGridView)
+        public void WriteAppointmentToFile(string filename, string clientName, Service service, string master, string date)
         {
-            dataGridView.AutoGenerateColumns = false;
+            string appointmentString = $"\n{clientName};{service.Name};{master};{date}";
+            try
+            {
+                File.AppendAllText(filename, appointmentString);
+                MessageBox.Show("Запись сохранена");
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show($"Ошибка при записи: {ex}");
+            }
 
-            DataGridViewTextBoxColumn clientColumn = new DataGridViewTextBoxColumn();
-            clientColumn.DataPropertyName = "Client";
-            clientColumn.HeaderText = "Client";
-
-            DataGridViewTextBoxColumn serviceNameColumn = new DataGridViewTextBoxColumn();
-            serviceNameColumn.DataPropertyName = "ServiceName";
-            serviceNameColumn.HeaderText = "ServiceName";
-
-            DataGridViewTextBoxColumn masterColumn = new DataGridViewTextBoxColumn();
-            masterColumn.DataPropertyName = "Master";
-            masterColumn.HeaderText = "Master";
-
-            DataGridViewTextBoxColumn dateColumn = new DataGridViewTextBoxColumn();
-            dateColumn.DataPropertyName = "Date";
-            dateColumn.HeaderText = "Date";
-            dateColumn.DefaultCellStyle.Format = "d/MM/yyyy";
-
-            dataGridView.Columns.Clear();
-            dataGridView.Columns.Add(clientColumn);
-            dataGridView.Columns.Add(serviceNameColumn);
-            dataGridView.Columns.Add(masterColumn);
-            dataGridView.Columns.Add(dateColumn);
-
-            dataGridView.DataSource = null;
-            dataGridView.DataSource = appointments;
         }
 
         public List<EmployeeReportModel> GenerateEmployeeReport(DateTime startDate, DateTime endDate, BindingList<Appointment> appointments)
