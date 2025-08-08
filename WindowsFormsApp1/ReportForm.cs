@@ -14,17 +14,28 @@ namespace WindowsFormsApp1
     public partial class ReportForm: Form
     {
         Salon salon = new Salon();
-        BindingList<Appointment> a;
-        public ReportForm()
+        BindingList<Appointment> appointments;
+        public ReportForm(BindingList<Appointment> appointmentsBind)
         {
             InitializeComponent();
-            //a = _a;
+            appointments = appointmentsBind;
+            DateTimeStart.Format = DateTimePickerFormat.Custom;
+            DateTimeStart.CustomFormat = "dd/MM/yyyy";
+
+            DateTimeEnd.Format = DateTimePickerFormat.Custom;
+            DateTimeEnd.CustomFormat = "dd/MM/yyyy";
             ReportTable.DataSource = null;
         }
 
         private void EmployeeReportButton_Click(object sender, EventArgs e)
         {
-            var employeeReport = salon.GenerateEmployeeReport(DateTimeStart.Value.Date, DateTimeEnd.Value.Date, a);
+            if(DateTimeStart.Value.Date > DateTimeEnd.Value.Date)
+            {
+                MessageBox.Show("Дата начала не может быть больше даты конца");
+                return;
+            }
+
+            var employeeReport = salon.GenerateEmployeeReport(DateTimeStart.Value.Date, DateTimeEnd.Value.Date, appointments);
             if (employeeReport != null && employeeReport.Any())
             {
                 ReportTable.DataSource = employeeReport;
@@ -37,7 +48,13 @@ namespace WindowsFormsApp1
 
         private void RevenueReportButton_Click(object sender, EventArgs e)
         {
-            var revenueReport = salon.GenerateRevenueReport(DateTimeStart.Value.Date, DateTimeEnd.Value.Date, a);
+            if (DateTimeStart.Value.Date > DateTimeEnd.Value.Date)
+            {
+                MessageBox.Show("Дата начала не может быть больше даты конца");
+                return;
+            }
+
+            var revenueReport = salon.GenerateRevenueReport(DateTimeStart.Value.Date, DateTimeEnd.Value.Date, appointments);
             if (revenueReport.Any(rev => rev.TotalRevenue != 0))
             {
                 ReportTable.DataSource = revenueReport;

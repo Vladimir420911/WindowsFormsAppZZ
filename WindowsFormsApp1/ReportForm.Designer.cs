@@ -52,7 +52,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(135, 234);
+            this.label2.Location = new System.Drawing.Point(135, 231);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(81, 13);
             this.label2.TabIndex = 25;
@@ -61,7 +61,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 234);
+            this.label1.Location = new System.Drawing.Point(13, 231);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(88, 13);
             this.label1.TabIndex = 24;
@@ -79,14 +79,14 @@
             // 
             // DateTimeEnd
             // 
-            this.DateTimeEnd.Location = new System.Drawing.Point(138, 253);
+            this.DateTimeEnd.Location = new System.Drawing.Point(138, 250);
             this.DateTimeEnd.Name = "DateTimeEnd";
             this.DateTimeEnd.Size = new System.Drawing.Size(111, 20);
             this.DateTimeEnd.TabIndex = 22;
             // 
             // DateTimeStart
             // 
-            this.DateTimeStart.Location = new System.Drawing.Point(12, 253);
+            this.DateTimeStart.Location = new System.Drawing.Point(12, 250);
             this.DateTimeStart.Name = "DateTimeStart";
             this.DateTimeStart.Size = new System.Drawing.Size(111, 20);
             this.DateTimeStart.TabIndex = 21;
@@ -101,7 +101,7 @@
             // 
             // ResetButton
             // 
-            this.ResetButton.Location = new System.Drawing.Point(12, 335);
+            this.ResetButton.Location = new System.Drawing.Point(16, 351);
             this.ResetButton.Name = "ResetButton";
             this.ResetButton.Size = new System.Drawing.Size(111, 23);
             this.ResetButton.TabIndex = 28;
@@ -113,7 +113,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(766, 370);
+            this.ClientSize = new System.Drawing.Size(766, 386);
             this.Controls.Add(this.ResetButton);
             this.Controls.Add(this.ReportTable);
             this.Controls.Add(this.EmployeeReportButton);

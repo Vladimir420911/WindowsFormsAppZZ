@@ -14,7 +14,7 @@ namespace WindowsFormsApp1
 {
     public partial class AppointmentsForm : Form
     {
-        Salon salon = new Salon();
+        //Salon salon = new Salon();
         BindingList<Appointment> appointments;
         BindingList<Service> services;
         public AppointmentsForm(BindingList<Appointment> appointmentsBind, BindingList<Service> servicesBind)

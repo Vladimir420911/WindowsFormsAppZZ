@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -39,7 +40,7 @@ namespace MyLib
                 string clientName = lines[0];
                 string serviceName = lines[1];
                 string master = lines[2];
-                DateTime date = DateTime.ParseExact(lines[3], "d/MM/yyyy", null);
+                DateTime date = DateTime.ParseExact(lines[3], "dd/MM/yyyy", CultureInfo.InvariantCulture);
 
                 if(services.ContainsKey(serviceName))
                 {

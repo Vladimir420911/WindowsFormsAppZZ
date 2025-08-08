@@ -31,7 +31,6 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.отчётностьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.записиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.услугиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.AddAppointment = new System.Windows.Forms.Button();
@@ -44,8 +43,7 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.отчётностьToolStripMenuItem,
-            this.записиToolStripMenuItem,
-            this.услугиToolStripMenuItem});
+            this.записиToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
@@ -57,6 +55,7 @@
             this.отчётностьToolStripMenuItem.Name = "отчётностьToolStripMenuItem";
             this.отчётностьToolStripMenuItem.Size = new System.Drawing.Size(82, 20);
             this.отчётностьToolStripMenuItem.Text = "Отчётность";
+            this.отчётностьToolStripMenuItem.Click += new System.EventHandler(this.отчётностьToolStripMenuItem_Click);
             // 
             // записиToolStripMenuItem
             // 
@@ -64,12 +63,6 @@
             this.записиToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
             this.записиToolStripMenuItem.Text = "Записи";
             this.записиToolStripMenuItem.Click += new System.EventHandler(this.записиToolStripMenuItem_Click);
-            // 
-            // услугиToolStripMenuItem
-            // 
-            this.услугиToolStripMenuItem.Name = "услугиToolStripMenuItem";
-            this.услугиToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
-            this.услугиToolStripMenuItem.Text = "Услуги";
             // 
             // pictureBox1
             // 
@@ -130,7 +123,6 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem отчётностьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem записиToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem услугиToolStripMenuItem;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button AddAppointment;

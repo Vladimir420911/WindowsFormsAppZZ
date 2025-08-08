@@ -52,6 +52,7 @@ namespace WindowsFormsApp1
             Service service = GetService();
             string master = MasterComboBox.Text;
             string date = dateTimePicker1.Text;
+
             var appointment = new Appointment(clientName,
                                               service,
                                               master,
